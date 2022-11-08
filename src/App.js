@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+
+export const TeamContext = createContext();
 
 function App() {
+  const [team, setTeam] = useState("Real Madrid");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TeamContext.Provider value={[team, setTeam]}>
+      <h3>team: {team}</h3>
+      <Header />
+      <Home />
+    </TeamContext.Provider>
   );
 }
 
